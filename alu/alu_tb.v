@@ -16,20 +16,22 @@ module tb_alu;
             ALU_Out, // ALU 8-bit Output
             CarryOut // Carry Out Flag
      );
-    initial begin
-    // hold reset state for 100 ns.
-      A = 8'h0A;
-      B = 4'h02;
-      ALU_Sel = 4'h0;
+
+
+  task test(input reg [3:0] sel);
+     A = $random();
+     B = $random();
+     ALU_Sel = sel;
+     #10;
+  endtask
+
+  initial begin
+
+    // Test 1 : Addition
+    test(0);
+    if(ALU_Out != A + B) $display("Test Failed")
+    else $display("Test passed");
+
       
-      for (i=0;i<=15;i=i+1)
-      begin
-       ALU_Sel = ALU_Sel + 8'h01;
-       #10;
-      end;
-      
-      A = 8'hF6;
-      B = 8'h0A;
-      
-    end
+  end
 endmodule
