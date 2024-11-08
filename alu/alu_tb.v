@@ -32,6 +32,11 @@ module tb_alu;
     if(ALU_Out != A + B) $display("Test Failed")
     else $display("Test passed");
 
+    // Test 1 : Subtraction
+    test(1);
+    if(ALU_Out != A - B) $display("Test Failed")
+    else $display("Test passed");
+
       
   end
 endmodule
