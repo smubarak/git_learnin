@@ -4,12 +4,16 @@ module alu(
            output [7:0] ALU_Out, // ALU 8-bit Output
            output CarryOut // Carry Out Flag
     );
+    
     reg [7:0] ALU_Result;
     wire [8:0] tmp;
-    assign ALU_Out = ALU_Result; // ALU out
-    assign tmp = {1'b0,A} + {1'b0,B};
-    assign CarryOut = tmp[8]; // Carryout flag
-    always @(*)
+
+    assign ALU_Out  = ALU_Result;           // ALU out
+    assign tmp      = {1'b0,A} + {1'b0,B};
+    assign CarryOut = tmp[8];               // Carryout flag
+    
+    // main Logic
+    always @(*) // sensitivity
     begin
         case(ALU_Sel)
         4'b0000: // Addition
