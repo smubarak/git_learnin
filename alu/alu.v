@@ -13,7 +13,7 @@ module alu(
     assign CarryOut = tmp[8];               // Carryout flag
     
 
-    always @(*) // sensitivity //alwaysblock
+    always @(*) // sensitivity //alwaysblock made a change here
     begin
         case(ALU_Sel)
         4'b0000: // Addition
