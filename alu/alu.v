@@ -12,7 +12,7 @@ module alu(
     assign tmp      = {1'b0,A} + {1'b0,B};
     assign CarryOut = tmp[8];               // Carryout flag
     
-    // This is the main Code
+    // This is the main Code ---
     always @(*) // sensitivity //alwaysblock made a change here
     begin
         case(ALU_Sel)
